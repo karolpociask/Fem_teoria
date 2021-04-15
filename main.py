@@ -18,4 +18,3 @@ def genTab(x_0,x_p, n):
 
 lp, tablica = genTab(0, 4, 100)
 print (lp, tablica)
-#test
