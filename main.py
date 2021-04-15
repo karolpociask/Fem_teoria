@@ -52,21 +52,24 @@ wezel = np.array([[1, 0],
 element = np.array([[1, 1, 3],
                      [2, 4, 2],
                      [3, 3, 4]])
+def rysowanieWykresu(mac):
+    wezel = mac[0];
+    element = mac[1]
+    plt.plot(wezel[:, 1], np.zeros((np.shape(wezel)[0], 1)))
+    plt.plot(wezel[:, 1], np.zeros((np.shape(wezel)[0], 1)), 'ro')
+    for i in range(np.shape(wezel)[0]):
+        plt.text(wezel[i, 1] - 0.02, -0.01, "x" + str(int(wezel[i, 0])))
+        plt.text(wezel[i, 1] - 0.01, -0.02, str(int(wezel[i, 0])), color="green", fontsize=16)
+    for i in range(np.shape(element)[0]):
+        pom1 = element[i, 1]
+        pom2 = element[i, 2]
+        plt.text(wezel[pom1 - 1, 1] + (max(wezel[:,1]))/70, +0.001, "1", color="red", fontsize=16)
+        plt.text(wezel[pom2 - 1, 1] - (max(wezel[:,1]))/35, +0.001, "2", color="red", fontsize=16)
+        plt.text((wezel[pom1 - 1, 1]+wezel[pom2 - 1,1])/2, +0.02, str(element[i,0]), color="blue", fontsize=16)
+    plt.grid()
+    plt.show()
 
-plt.plot(wezel[:, 1], np.zeros((np.shape(wezel)[0], 1)))
-plt.plot(wezel[:, 1], np.zeros((np.shape(wezel)[0], 1)), 'ro')
-for i in range(np.shape(wezel)[0]):
-    plt.text(wezel[i, 1] - 0.02, -0.01, "x" + str(int(wezel[i, 0])))
-    plt.text(wezel[i, 1] - 0.01, -0.02, str(int(wezel[i, 0])), color="green", fontsize=16)
-for i in range(np.shape(element)[0]):
-    pom1 = element[i, 1]
-    pom2 = element[i, 2]
-    plt.text(wezel[pom1 - 1, 1] + 0.01, +0.001, "1", color="red", fontsize=16)
-    plt.text(wezel[pom2 - 1, 1] - 0.05, +0.001, "2", color="red", fontsize=16)
-    plt.text((wezel[pom1 - 1, 1]+wezel[pom2 - 1,1])/2, +0.02, str(element[i,0]), color="blue", fontsize=16)
-plt.grid()
-plt.show()
-
-macierz = genTab(0,4,5)
+macierz = genTab(0,1000,5)
+rysowanieWykresu(macierz)
 print(wezel)
 print(element)
